@@ -7,6 +7,7 @@ def load_arr(file):
     print(numpy.shape(data))
     return data
 
+#equal to using linalg.norm but much slower
 # def distance(x, xi):
 #     d = 0.00000000000
 #     temp = xi[1:-1]
@@ -22,21 +23,30 @@ def load_arr(file):
 def distance(x, xi):
     temp = xi[1:-1]
     tempx = x[1:]
-    c = temp - tempx
-    numpy.power(c, 2)
+    c = numpy.power(tempx-temp, 2)
     d = numpy.linalg.norm(c)
     #print(d)
+    if d == 0.0:
+        #print cases when distance is 0
+        print(temp)
+        print(tempx)
+        print("match made")
+        exit
     return d   
 
 def classify(test, train):
     avg = 0.0
     dist = numpy.empty((1,8000))
-    near = numpy.empty((k))
     for case in train:
+        #issue here - dist array not being updated it seems
         numpy.append(dist, distance(test, case))
+    #sort array by index
     dex = numpy.argsort(dist)
-    print(dist)
-    #for i in range(0,k):
+    #print(dex)
+    #print k neartest neighbors
+    for i in range(0,k):
+        print(dex[0, i])
+        print(dist[0, dex[0, i]])
 
 
 
