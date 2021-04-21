@@ -1,15 +1,44 @@
 import csv, numpy
 
+k = 5
+
 def load_arr(file):
     data = numpy.genfromtxt(file, dtype = float, delimiter = ',', skip_header=1)
     print(numpy.shape(data))
     return data
 
+# def distance(x, xi):
+#     d = 0.00000000000
+#     temp = xi[1:-1]
+#     tempx = x[1:]
+#     c = tempx - temp
+#     numpy.power(c, 2)
+#     index = 0
+#     for i in numpy.nditer(c):
+#         d += i
+#     return numpy.sqrt(d)
+
+
+def distance(x, xi):
+    temp = xi[1:-1]
+    tempx = x[1:]
+    c = temp - tempx
+    numpy.power(c, 2)
+    d = numpy.linalg.norm(c)
+    #print(d)
+    return d   
+
 def classify(test, train):
-    dist = list()
+    avg = 0.0
+    dist = numpy.empty((1,8000))
+    near = numpy.empty((k))
     for case in train:
-        dist.append(distance(test, case))
-    near = numpy.argsort(dist)[:k]
+        numpy.append(dist, distance(test, case))
+    dex = numpy.argsort(dist)
+    print(dist)
+    #for i in range(0,k):
+
+
 
 
 def main():
@@ -20,10 +49,12 @@ def main():
     index = 0
     output = open("output.txt", "w")
     for test in test_pub:
-        output.write(index)
+        print("Test Number: ", index)
+        output.write(str(index))
         output.write(",")
         output.write(str(classify(test,train)))
         output.write("\n")
+        index += 1
     output.close()
 
 main()
