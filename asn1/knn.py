@@ -23,30 +23,28 @@ def load_arr(file):
 def distance(x, xi):
     temp = xi[1:-1]
     tempx = x[1:]
-    c = numpy.power(tempx-temp, 2)
-    d = numpy.linalg.norm(c)
-    #print(d)
-    if d == 0.0:
-        #print cases when distance is 0
-        print(temp)
-        print(tempx)
-        print("match made")
-        exit
+    d = numpy.linalg.norm(temp - tempx)
     return d   
 
 def classify(test, train):
-    avg = 0.0
-    dist = numpy.empty((1,8000))
+    avg = 0.00000000000
+    dist = list()
+    index = 0
     for case in train:
         #issue here - dist array not being updated it seems
-        numpy.append(dist, distance(test, case))
+        val = distance(test, case)
+        #print(val)
+        dist.append(val)
+        index += 1
     #sort array by index
     dex = numpy.argsort(dist)
-    #print(dex)
     #print k neartest neighbors
+    near = list()
     for i in range(0,k):
-        print(dex[0, i])
-        print(dist[0, dex[0, i]])
+        avg += train[dex[i], 86]
+    avg /= k
+    ident = round(avg)
+    return ident
 
 
 
@@ -54,7 +52,6 @@ def classify(test, train):
 def main():
     train = load_arr("train.csv")
     test_pub = load_arr("test_pub.csv")
-
     #test case loop
     index = 0
     output = open("output.txt", "w")
