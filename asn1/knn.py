@@ -94,7 +94,7 @@ def kmain(train):
             nacc = 0
             #calculate training performance
             for r in vd:
-                if cases[index, 86] == r:
+                if cases[index, -1] == r:
                     nacc += 1
             acc = nacc/2000.0
             output.write(" Training Accuracy: ")
