@@ -55,6 +55,7 @@ def kmain(train):
         output.write("\n")
         print("k = ", k)
         vmean = 0.0000000000
+        kmean = 0.0000000000
         var = list()
         #loop over subset valdation blocks
         for i in range(0,4):
@@ -113,7 +114,7 @@ def kmain(train):
         output.write("  Varience")
         output.write(str(v))
         output.write("\n")
-        perf.append(vmean)
+        perf.append(kmean)
         print("mean", vmean)
         print("var", v)
     #determine highest performing k
@@ -129,6 +130,8 @@ def main():
         global k
         k = kmain(train)
     print("generating output based on best performance")
+    global flag
+    flag = 0
     index = 0
     res = open("result.txt", "w")
     res.write("id,income\n")
