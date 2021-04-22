@@ -1,5 +1,5 @@
-import csv, numpy
-k = 7
+import csv, numpy, sys
+k = 8
 #k values for k-fold to try
 hp = [1, 3, 5, 7, 9, 99, 999, 8000]
 #kfold flag
@@ -34,7 +34,7 @@ def classify(test, train):
         k = 6000
     for i in range(0,k):
         avg += train[dex[i], -1]
-    avg /= k
+    avg = numpy.divide(avg,k)
     ident = round(avg)
     return ident
 
@@ -61,13 +61,13 @@ def kmain(train):
             print("subset ", (i+1))
             output.write("Subset #")
             output.write(str(i+1))
-            nacc = 0
+            nacc = 0.00
             start = i * 2000
             end = (i+1) * 2000
             cases = train[start:end]
-            if start == 0:
+            if i == 0:
                 tcases = train[end:]
-            elif end == 8000:
+            elif i == 3:
                 tcases = train[:start]
             else:
                 t1 = train[:start]
@@ -79,24 +79,29 @@ def kmain(train):
                 res.append(classify(test, tcases))
             index = 0
             #calculate validation performance
-            for r in res:
-                if cases[index, -1] == r:
+            for case in cases:
+                if case[-1] == res[index]:
                     nacc += 1
+                index += 1
             acc = nacc/2000.0
             vmean += acc
             var.append(acc)
             output.write(" Validation Accuracy: ")
+            print("Validation: ", acc)
             output.write(str(acc))
             vd = list()
             #test validation data against all of the data and store result
             for test in cases:
                 vd.append(classify(test, train))
-            nacc = 0
+            nacc = 0.00
             #calculate training performance
-            for r in vd:
-                if cases[index, -1] == r:
+            index = 0
+            for case in cases:
+                if case[-1] == vd[index]:
                     nacc += 1
+                index += 1
             acc = nacc/2000.0
+            print("training:", acc)
             output.write(" Training Accuracy: ")
             output.write(str(acc))
             output.write("\n")
@@ -106,11 +111,11 @@ def kmain(train):
         output.write("Mean = ")
         output.write(str(vmean))
         output.write("  Varience")
-        output.write(str(var))
+        output.write(str(v))
         output.write("\n")
         perf.append(vmean)
         print("mean", vmean)
-        print("var", var)
+        print("var", v)
     #determine highest performing k
     output.close()
     dex = numpy.argsort(perf)
@@ -120,8 +125,9 @@ def kmain(train):
 def main():
     train = load_arr("train.csv")
     test_pub = load_arr("test_pub.csv") 
-    global k
-    k = kmain(train)
+    if sys.argv[1] == "validate":
+        global k
+        k = kmain(train)
     print("generating output based on best performance")
     index = 0
     res = open("result.txt", "w")
