@@ -1,0 +1,4 @@
+[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=https://www.kaggle.com/c/cs434-hw2/data?select=train_cancer.csv
+HostUrl=https://storage.googleapis.com/kagglesdsdata/competitions/27382/2178817/train_cancer.csv?GoogleAccessId=web-data@kaggle-161607.iam.gserviceaccount.com&Expires=1620370150&Signature=osJf%2F8SWJS0eNAbjrHMo0XDn0xesDPJu%2Fv7i26aUp9CcQXZXL2ONNCbbmnMZhM%2FgsllywC8m3Vavqm1A%2FhvJ641Ha5eR672lXnkJecxNUAiT5VllZGx8f5PTIWdJwm3%2FCxfRPUHDq07ukYzQfhYVkldsqDB%2FDWEKrGLDkWfPguSXU1yZQc3nVep3IU43W9EuHMctwe1q5FUlhbfxh9j48GeKQ3ELadQMNjNYSfa03IaNQ%2Fm%2BdZyNq1KFiK7fir0E2eQRpQAOuipvbGOKsuCbtaMQlA8sBIJ2uGA7gL%2FL%2B%2BFVW7Ba4wA1AcXteVb69orYBRaJmz7Rh5Pf02peTmvH%2Fg%3D%3D&response-content-disposition=attachment%3B+filename%3Dtrain_cancer.csv

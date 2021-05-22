@@ -1,0 +1,48 @@
+K = 1
+Subset #1 Validation Accuracy: 0.7865 Training Accuracy: 0.99
+Subset #2 Validation Accuracy: 0.795 Training Accuracy: 0.9885
+Subset #3 Validation Accuracy: 0.7845 Training Accuracy: 0.988
+Subset #4 Validation Accuracy: 0.7815 Training Accuracy: 0.9805
+Mean = 0.786875  Varience2.5171875000000268e-05
+K = 3
+Subset #1 Validation Accuracy: 0.8105 Training Accuracy: 0.886
+Subset #2 Validation Accuracy: 0.805 Training Accuracy: 0.9025
+Subset #3 Validation Accuracy: 0.7975 Training Accuracy: 0.885
+Subset #4 Validation Accuracy: 0.8025 Training Accuracy: 0.8855
+Mean = 0.8038749999999999  Varience2.192187500000007e-05
+K = 5
+Subset #1 Validation Accuracy: 0.817 Training Accuracy: 0.8735
+Subset #2 Validation Accuracy: 0.8215 Training Accuracy: 0.8785
+Subset #3 Validation Accuracy: 0.803 Training Accuracy: 0.863
+Subset #4 Validation Accuracy: 0.8175 Training Accuracy: 0.868
+Mean = 0.81475  Varience4.90624999999997e-05
+K = 7
+Subset #1 Validation Accuracy: 0.8195 Training Accuracy: 0.8685
+Subset #2 Validation Accuracy: 0.8235 Training Accuracy: 0.8685
+Subset #3 Validation Accuracy: 0.8065 Training Accuracy: 0.8485
+Subset #4 Validation Accuracy: 0.811 Training Accuracy: 0.8655
+Mean = 0.815125  Varience4.5171874999999965e-05
+K = 9
+Subset #1 Validation Accuracy: 0.826 Training Accuracy: 0.858
+Subset #2 Validation Accuracy: 0.823 Training Accuracy: 0.8605
+Subset #3 Validation Accuracy: 0.8095 Training Accuracy: 0.844
+Subset #4 Validation Accuracy: 0.814 Training Accuracy: 0.8565
+Mean = 0.818125  Varience4.4296874999999835e-05
+K = 99
+Subset #1 Validation Accuracy: 0.8325 Training Accuracy: 0.8375
+Subset #2 Validation Accuracy: 0.8255 Training Accuracy: 0.8345
+Subset #3 Validation Accuracy: 0.8175 Training Accuracy: 0.824
+Subset #4 Validation Accuracy: 0.8295 Training Accuracy: 0.8335
+Mean = 0.8262499999999999  Varience3.168750000000006e-05
+K = 999
+Subset #1 Validation Accuracy: 0.815 Training Accuracy: 0.8185
+Subset #2 Validation Accuracy: 0.827 Training Accuracy: 0.83
+Subset #3 Validation Accuracy: 0.81 Training Accuracy: 0.817
+Subset #4 Validation Accuracy: 0.8265 Training Accuracy: 0.8265
+Mean = 0.819625  Varience5.392187499999975e-05
+K = 8000
+Subset #1 Validation Accuracy: 0.761 Training Accuracy: 0.761
+Subset #2 Validation Accuracy: 0.7555 Training Accuracy: 0.7555
+Subset #3 Validation Accuracy: 0.7455 Training Accuracy: 0.7455
+Subset #4 Validation Accuracy: 0.7545 Training Accuracy: 0.7545
+Mean = 0.7541249999999999  Varience3.092187499999976e-05
