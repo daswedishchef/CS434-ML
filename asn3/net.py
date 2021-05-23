@@ -13,15 +13,15 @@ matplotlib.rc('font', **font)
 
 
 # GLOBAL PARAMETERS FOR STOCHASTIC GRADIENT DESCENT
-np.random.seed(102)
+np.random.seed(7)
 step_size = 0.01
 batch_size = 200
-max_epochs = 200
+max_epochs = 500
 
 # GLOBAL PARAMETERS FOR NETWORK ARCHITECTURE
-number_of_layers = 2
+number_of_layers = 5
 width_of_layers = 16  # only matters if number of layers > 1
-activation = "ReLU" if False else "Sigmoid" 
+activation = "ReLU"
 
 def main():
 
@@ -116,13 +116,23 @@ def main():
   ax1.legend(loc="center")
   ax2.legend(loc="center right")
   plt.show()
+  plt.savefig("net_plot.png")
+  plt.close()
 
 
   ################################
   # Q8 Evaluate on Test
   ################################
-  raise Exception('Student error: You haven\'t implemented evaluating the test set yet.')
-
+  output = net.forward(X_test)
+  output = np.argmax(output, axis = 1)
+  kag = open("sub.txt", "w")
+  kag.write("id,digit\n")
+  for res in range(len(output)):
+    kag.write(str(res))
+    kag.write(",")
+    kag.write(str(output[res]))
+    kag.write("\n")
+  kag.close()
 
 
 class LinearLayer:
@@ -141,10 +151,9 @@ class LinearLayer:
   # Q3 Implementing Backward Pass for Linear
   #################################################
   def backward(self, grad):
-    #raise Exception('Student error: You haven\'t implemented the backward pass for linear yet.')
-    self.grad_weights = TODO1
-    self.grad_bias = np.sum(grad, axis = 1)
-    return TODO3
+    self.grad_weights = np.transpose(self.input)@grad
+    self.grad_bias = np.sum(grad, axis = 0)
+    return grad@np.transpose(self.weights)
     
   def step(self, step_size):
     self.weights -= step_size*self.grad_weights
